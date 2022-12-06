@@ -1,0 +1,20 @@
+[
+    {
+        "clase": "Guerrero",
+        "vida": 100,
+        "poder": 80,
+        "agilidad": 60
+    },
+    {
+        "clase": "Mago",
+        "vida": 70,
+        "poder": 100,
+        "agilidad": 70
+    },
+    {
+        "clase": "Tirador",
+        "vida": 80,
+        "poder": 90,
+        "agilidad": 90
+    }
+]

@@ -90,7 +90,7 @@ class Personaje {
       pSeleccionArma.innerText = "Selecciona tu arma inicial:";
       botonArmaMago1.innerText = "Varita";
       divMago.append(botonArmaMago1);
-      botonArmaMago2.innerText = "Báculo";
+      botonArmaMago2.innerText = "BÃ¡culo";
       divMago.append(botonArmaMago2);
       botonArmaMago3.innerText = "Libro";
       divMago.append(botonArmaMago3);
@@ -157,7 +157,7 @@ let poder;
 const datosPersonaje = {};
 
 botonGuerrero.onclick = () => {
-  divInfoGuerrero.innerText = "Datos del Guerrero: \n Vida: 100 \n Poder: 80";
+
   divGuerrero.append(divInfoGuerrero);
 
   botonGuerreroElegir.innerText = "Elegir";
@@ -184,7 +184,7 @@ botonGuerrero.onclick = () => {
 };
 
 botonMago.onclick = () => {
-  divInfoMago.innerText = "Datos del Mago: \n Vida: 100 \n Poder: 80";
+
   divMago.append(divInfoMago);
 
   botonMagoElegir.innerText = "Elegir";
@@ -211,7 +211,7 @@ botonMago.onclick = () => {
 };
 
 botonTirador.onclick = () => {
-  divInfoTirador.innerText = "Datos del Tirador: \n Vida: 100 \n Poder: 80";
+  
   divTirador.append(divInfoTirador);
 
   botonTiradorElegir.innerText = "Elegir";
@@ -239,20 +239,12 @@ botonTirador.onclick = () => {
 
 //Funciones para abrir y cerrar el modal
 let cerrar = document.querySelectorAll(".close")[0];
-let abrir = document.querySelectorAll(".cta")[0];
 let modal = document.querySelectorAll(".modal")[0];
 let modalC = document.querySelectorAll(".modal-container")[0];
-let ataque = document.querySelectorAll(".atk");
-let piedad = document.querySelectorAll(".pty");
+let ataque = document.querySelector(".atk");
+let piedad = document.querySelector(".pty");
 
-abrir.addEventListener("click", function (e) {
-  e.preventDefault;
-  modalC.style.opacity = 1;
-  modalC.style.visibility = "visible";
-  modal.classList.toggle("modal-close");
-});
-
-cerrar.addEventListener("click", function () {
+cerrar.addEventListener("click", function() {
   modal.classList.toggle("modal-close");
   setTimeout(function () {
     modalC.style.opacity = 0;
@@ -272,13 +264,34 @@ window.addEventListener("click", function (e) {
 });
 
 
-// ataque.addEventListener("click", function(){
-// var x = Math.ceil(Math.random() * 10);
-// var a = Math.ceil(Math.random() * 10);
-// alert("Ganas " + a + " puntos de xp");
-// });
+ataque.addEventListener("click", function(){
+let a = Math.ceil(Math.random() * 10);
+  Swal.fire({
+    title: 'FELICIDADES',
+    text: `Ganas ${a} puntos de xp.`,
+    icon: 'success',
+    confirmButtonText: 'Continuar'
+  })
+});
 
-// piedad.addEventListener("click", function(){
-//   alert("Bien, ganas 0 puntos de xp, pero una amistad");
-// })
+piedad.addEventListener("click", function(){
+  Swal.fire({
+    title: 'FELICIDADES',
+    text: `Bien, ganas 0 puntos de xp, pero una nueva amistad`,
+    icon: 'success',
+    confirmButtonText: 'Continuar'
+  })
+})
 
+const buscarStats = async () => {
+  const statsFetch = await fetch('stats.json');
+  const statsJson = await statsFetch.json();
+  
+  console.log(statsJson);
+
+  divInfoGuerrero.innerText = `Datos del ${statsJson[0].clase}: \n Vida: ${statsJson[0].vida} \n Poder: ${statsJson[0].poder} \n Agilidad: ${statsJson[0].agilidad}`;
+  divInfoMago.innerText = `Datos del ${statsJson[1].clase}: \n Vida: ${statsJson[1].vida} \n Poder: ${statsJson[1].poder} \n Agilidad: ${statsJson[1].agilidad}`;
+  divInfoTirador.innerText = `Datos del ${statsJson[2].clase}: \n Vida: ${statsJson[2].vida} \n Poder: ${statsJson[2].poder} \n Agilidad: ${statsJson[2].agilidad}`;
+}
+
+buscarStats();
