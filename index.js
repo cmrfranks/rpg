@@ -36,6 +36,12 @@ const botonArmaTirador3 = document.createElement("button");
 
 let arma;
 
+//Agregando una clase para modificar los botones con CSS
+
+botonGuerreroElegir.classList.add("btn");
+botonMagoElegir.classList.add("btn");
+botonTiradorElegir.classList.add("btn");
+
 //Agregando clase "cta" para poder usar el modal
 
 botonArmaGuerrero1.classList.add("cta");

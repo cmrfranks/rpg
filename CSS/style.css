@@ -43,7 +43,17 @@
     transform: scale(1.05);
 }
 
-.cta{
+#botonGuerrero, #botonMago, #botonTirador, .btn{
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: midnightblue;
+    color: aliceblue;
+    margin: 10px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+ .cta{
     display: inline-block;
     padding: 7px 0px;
     margin: 5px;
@@ -53,7 +63,7 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-}
+} 
 
 .modal-container{
     position: fixed;
